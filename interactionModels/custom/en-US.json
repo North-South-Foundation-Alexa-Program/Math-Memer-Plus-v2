@@ -1,0 +1,121 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "math memer plus",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "HelloWorldIntent",
+          "slots": [],
+          "samples": [
+            "hello",
+            "how are you",
+            "say hi world",
+            "say hi",
+            "hi",
+            "say hello world",
+            "say hello"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "JokeIntent",
+          "slots": [
+            {
+              "name": "math_topic",
+              "type": "AMAZON.Genre",
+              "samples": [
+                "A joke from {math_topic}",
+                "The {math_topic} category",
+                "{math_topic}"
+              ]
+            }
+          ],
+          "samples": [
+            "give me an {math_topic} joke",
+            "I want an {math_topic} joke",
+            "tell me an {math_topic} joke",
+            "I want a joke about {math_topic}",
+            "give me a joke about {math_topic}",
+            "tell me a joke about {math_topic}",
+            "tell me a {math_topic} joke",
+            "I want a {math_topic} joke",
+            "give me a {math_topic} joke"
+          ]
+        }
+      ],
+      "types": []
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "JokeIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "math_topic",
+              "type": "AMAZON.Genre",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.773262476419.58412020420"
+              },
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.773262476419.58412020420.538743129064",
+                  "values": [
+                    "algebra",
+                    "geometry"
+                  ]
+                }
+              ]
+            }
+          ],
+          "delegationStrategy": "ALWAYS"
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.773262476419.58412020420",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Which math category do you want?"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.773262476419.58412020420.538743129064",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "You can hear either an algebra or geometry joke. "
+          }
+        ]
+      }
+    ]
+  },
+  "version": "12"
+}
